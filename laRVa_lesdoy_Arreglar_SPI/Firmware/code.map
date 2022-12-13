@@ -1,0 +1,114 @@
+Archive member included to satisfy reference by file (symbol)
+
+c:/users/tp1-1/downloads/pruebauart-20221129t083226z-001/pruebauart/tools/xpack-risc_v/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32e/ilp32e\libgcc.a(div.o)
+                              C:\Users\TP1-1\AppData\Local\Temp\ccznnxvp.o (__udivsi3)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+RONLY            0x0000000000000000 0x0000000000001c00 xr
+RAM              0x0000000000001c00 0x0000000000000400 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.text           0x0000000000000000      0x984
+                0x0000000000000000                . = ALIGN (0x4)
+ *(.boot)
+ .boot          0x0000000000000000        0x4 C:\Users\TP1-1\AppData\Local\Temp\ccqxlCEe.o
+ *(.text)
+ .text          0x0000000000000004       0x68 C:\Users\TP1-1\AppData\Local\Temp\ccqxlCEe.o
+                0x0000000000000060                delay_loop
+ .text          0x000000000000006c      0x7ac C:\Users\TP1-1\AppData\Local\Temp\ccznnxvp.o
+                0x000000000000006c                _putch
+                0x0000000000000544                _puts
+                0x0000000000000578                _printf
+                0x00000000000005b4                _sprintf
+                0x00000000000005ec                _getch
+                0x0000000000000630                haschar
+                0x000000000000064c                getMEPC
+                0x0000000000000658                irq1_handler
+                0x00000000000006c8                irq2_handler
+                0x000000000000072c                irq3_handler
+                0x000000000000077c                spixfer
+                0x000000000000079c                getw
+                0x00000000000007f0                _memcpy
+ .text          0x0000000000000818       0xb4 c:/users/tp1-1/downloads/pruebauart-20221129t083226z-001/pruebauart/tools/xpack-risc_v/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32e/ilp32e\libgcc.a(div.o)
+                0x0000000000000818                __divsi3
+                0x0000000000000820                __udivsi3
+                0x0000000000000820                __hidden___udivsi3
+                0x0000000000000868                __umodsi3
+                0x000000000000089c                __modsi3
+ *(.text*)
+ .text.startup  0x00000000000008cc       0x84 C:\Users\TP1-1\AppData\Local\Temp\ccznnxvp.o
+                0x00000000000008cc                main
+ *(.rodata)
+ *(.rodata*)
+ .rodata.str1.4
+                0x0000000000000950       0x34 C:\Users\TP1-1\AppData\Local\Temp\ccznnxvp.o
+ *(.srodata)
+ *(.srodata*)
+                0x0000000000000984                _etext = .
+                0x0000000000000984                _sidata = _etext
+
+.rela.dyn       0x0000000000000984        0x0
+ .rela.text     0x0000000000000984        0x0 C:\Users\TP1-1\AppData\Local\Temp\ccqxlCEe.o
+
+.data           0x0000000000001c00        0x4 load address 0x0000000000000984
+                0x0000000000001c00                . = ALIGN (0x4)
+                0x0000000000000984                _sdata_values = LOADADDR (.data)
+                0x0000000000001c00                _sdata = .
+                0x0000000000001c00                _ram_start = .
+                0x0000000000001c00                . = ALIGN (0x4)
+ *(.data)
+ .data          0x0000000000001c00        0x0 C:\Users\TP1-1\AppData\Local\Temp\ccqxlCEe.o
+ .data          0x0000000000001c00        0x0 C:\Users\TP1-1\AppData\Local\Temp\ccznnxvp.o
+ .data          0x0000000000001c00        0x0 c:/users/tp1-1/downloads/pruebauart-20221129t083226z-001/pruebauart/tools/xpack-risc_v/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32e/ilp32e\libgcc.a(div.o)
+ *(.data*)
+ *(.sdata)
+ .sdata         0x0000000000001c00        0x1 C:\Users\TP1-1\AppData\Local\Temp\ccznnxvp.o
+ *(.sdata*)
+                0x0000000000001c04                . = ALIGN (0x4)
+ *fill*         0x0000000000001c01        0x3 
+                0x0000000000001c04                _edata = .
+
+.bss            0x0000000000001c04       0x24 load address 0x0000000000000988
+                0x0000000000001c04                . = ALIGN (0x4)
+                0x0000000000001c04                _sbss = .
+ *(.bss)
+ .bss           0x0000000000001c04        0x0 C:\Users\TP1-1\AppData\Local\Temp\ccqxlCEe.o
+ .bss           0x0000000000001c04       0x20 C:\Users\TP1-1\AppData\Local\Temp\ccznnxvp.o
+                0x0000000000001c04                udat
+ .bss           0x0000000000001c24        0x0 c:/users/tp1-1/downloads/pruebauart-20221129t083226z-001/pruebauart/tools/xpack-risc_v/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32e/ilp32e\libgcc.a(div.o)
+ *(.bss*)
+ *(.sbss)
+ .sbss          0x0000000000001c24        0x2 C:\Users\TP1-1\AppData\Local\Temp\ccznnxvp.o
+                0x0000000000001c24                wrix
+                0x0000000000001c25                rdix
+ *(.sbss*)
+ *(COMMON)
+                0x0000000000001c28                . = ALIGN (0x4)
+ *fill*         0x0000000000001c26        0x2 
+                0x0000000000001c28                _ebss = .
+
+.heap           0x0000000000001c28        0x0 load address 0x0000000000000988
+                0x0000000000001c28                . = ALIGN (0x4)
+                0x0000000000001c28                _heap_start = .
+LOAD C:\Users\TP1-1\AppData\Local\Temp\ccqxlCEe.o
+LOAD C:\Users\TP1-1\AppData\Local\Temp\ccznnxvp.o
+LOAD c:/users/tp1-1/downloads/pruebauart-20221129t083226z-001/pruebauart/tools/xpack-risc_v/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32e/ilp32e\libgcc.a
+OUTPUT(code.elf elf32-littleriscv)
+
+.riscv.attributes
+                0x0000000000000000       0x20
+ .riscv.attributes
+                0x0000000000000000       0x1a C:\Users\TP1-1\AppData\Local\Temp\ccqxlCEe.o
+ .riscv.attributes
+                0x000000000000001a       0x20 C:\Users\TP1-1\AppData\Local\Temp\ccznnxvp.o
+ .riscv.attributes
+                0x000000000000003a       0x1a c:/users/tp1-1/downloads/pruebauart-20221129t083226z-001/pruebauart/tools/xpack-risc_v/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32e/ilp32e\libgcc.a(div.o)
+
+.comment        0x0000000000000000       0x33
+ .comment       0x0000000000000000       0x33 C:\Users\TP1-1\AppData\Local\Temp\ccznnxvp.o
+                                         0x34 (size before relaxing)

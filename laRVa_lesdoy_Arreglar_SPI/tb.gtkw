@@ -1,0 +1,38 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Tue Dec 13 15:52:13 2022
+[*]
+[dumpfile] "C:\Users\TP1-1\Downloads\PruebaUART-20221129T083226Z-001\PruebaUART\laRVa_lesdoy\tb.vcd"
+[dumpfile_mtime] "Tue Dec 13 15:50:38 2022"
+[dumpfile_size] 36579176
+[savefile] "C:\Users\TP1-1\Downloads\PruebaUART-20221129T083226Z-001\PruebaUART\laRVa_lesdoy\tb.gtkw"
+[timestart] 0
+[size] 1920 1017
+[pos] -61 -61
+*-24.541746 7855000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb.
+[treeopen] tb.sys1.
+[sst_width] 221
+[signals_width] 212
+[sst_expanded] 1
+[sst_vpaned_height] 287
+@28
+tb.sys1.spi0.clk
+tb.sys1.spi0.wr
+@22
+tb.sys1.spi0.divcnt[7:0]
+@28
+tb.sys1.spi0.sck
+tb.sys1.spi0.falling
+@22
+tb.sys1.spi0.bitcnt[5:0]
+@28
+tb.sys1.spi0.busy
+@22
+tb.sys1.spi0.shreg[31:0]
+@28
+tb.sys1.spi0.mosi
+tb.sys1.spi0.miso
+tb.sys1.spi0.sin
+[pattern_trace] 1
+[pattern_trace] 0

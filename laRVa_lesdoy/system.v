@@ -127,7 +127,7 @@
 `include "uart.v"
 `include "spi.v"
 
-////////////////////////////////////
+//////////////////////////////////// 
 //      Changed_Grupo1
 ////////////////////////////////////
 `include "uart2.v"
@@ -156,7 +156,7 @@ module SYSTEM (
 
 	output[31:0] gpout,	//gpout
 	
-	output fssb,	// Flash CS
+	output fssb,	// Flash CS 
 	output sssb		// SD card CS
 
 );
@@ -229,13 +229,13 @@ wire irqcs;		// IRQEN at offset 0xE0
 				// other at offset 0xE0
 assign uartcs = iocs&(ca[7:5]==3'b000);
 
-assign spics  = iocs&(ca[7:5]==3'b001);	
+assign spics  = iocs&(ca[7:5]==3'b001);	 
 
 assign irqcs  = iocs&(ca[7:5]==3'b111);
 assign gpoutcs  = iocs&(ca[7:5]==3'b100);	//0xE00000 80
 // Peripheral output bus mux
 reg [31:0]iodo;	// Not a register
-wire [31:0] spidat; 
+ 
 always@*
  casex (ca[7:2])
 	6'b000xx0: iodo<={24'h0,uart_do};
@@ -244,7 +244,8 @@ always@*
 	6'b010xx0: iodo<={24'h0,uart_do2};
 	6'b010xx1: iodo<={27'h0,ove2,fe2,tend2,thre2,dv2};
 	
-	6'b001000: iodo<= spidat;	//ASIGNAMOS LA DIRECCION 0XE000028
+	6'b001000: iodo<= spiDataRx;	//ASIGNAMOS LA DIRECCION 0xE000020
+	6'b001001: iodo<= {31'h0,busy};   //Asigno la dirección 0xE000024 a la señal nueva de control del SPI 
 	
 	6'b100xxx: iodo<= gpout;
 	6'b011xxx: iodo<=tcount;
@@ -284,10 +285,25 @@ UART_CORE #(.BAUDBITS(12)) uart0 ( .clk(cclk), .txd(txd), .rxd(rxd),
 
 
 wire spiwr;			// SPI wr write
+wire spitx;
 wire busy;
-SPI_master spi0 (.clk(cclk), .miso(miso),.wr(spiwr), .din(cdo), 
-				.divider(cdo[7:0]), .bits(cdo[13:8]), .sck(sck), .mosi(mosi),
-				.busy(busy), .dout(spidat) );
+reg [13:0] spictl;
+wire [31:0] spiDataRx;
+
+assign spiwr = spics  & (~ca[2])  & (mwe==4'b1111); // Necesitamos crear otra señal de control/selección arriba no solo usando los bits ca[7:5] también los menos significativos
+assign spitx = spics  & ( ca[2])  & (mwe==4'b1111); 
+always @(posedge clk) // Quitar esto: assign spiwr = spics; 
+	begin
+		if (spitx) // Y poner más condiciones aquí usando los bits menos significativos también
+			begin
+				spictl <= cdo[13:0];
+			end
+		
+	end
+ 
+SPI_master spi0 (.clk(cclk), .miso(miso), .wr(spiwr), .din(cdo), 
+				.divider(spictl[7:0]), .bits(spictl[13:8]), .sck(sck), .mosi(mosi),
+				.busy(busy), .dout(spiDataRx) );
 ////////////////////////////////////
 //      Changed_Grupo1
 ////////////////////////////////////

@@ -12,6 +12,7 @@ module main(
 	output ICE_SCK,
 	output ICE_MOSI,
 	input  ICE_MISO,
+    output BME680_CS,
     
     //SPI2
     // output SCK2,

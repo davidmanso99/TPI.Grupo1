@@ -154,12 +154,6 @@ void  __attribute__((interrupt ("machine"))) irq3_handler(){
 
 // --------------------------------------------------------
 
-uint32_t spixfer (uint32_t d)
-{
-	SPIDAT=d;
-	while(SPISTA&1);
-	return SPIDAT;
-}
 
 // --------------------------------------------------------
 // SPI2
@@ -191,40 +185,82 @@ uint8_t *_memcpy(uint8_t *pdst, uint8_t *psrc, uint32_t nb)
 	return pdst;
 }
 
+uint32_t spixfer (uint32_t d)
+{
+	SPIDAT=d;
+	while(SPISTA&1);
+	return SPIDAT;
+}
+
+
 void main()
 {
 	char c,buf[17];
 	uint8_t *p;
 	unsigned int i,j;
-	int n;
+	int n; 
 	void (*pcode)();
 	uint32_t *pi;
 	uint16_t *ps;
 	#define FREC_SPI 1000000
-	#define DIVIDER_SPI (*(volatile uint8_t*)((CCLK/(2*FREC_SPI))-1))
-	// #define DIVIDER_SPI ((CCLK/(2*FREC_SPI))-1) // Scamos el divider para que la frecuencia quede a 1Mhz -> Div = (CCLK/(2*frecuencia))-1 => Div = (18Mhz/(2*1Mhz))-1 = 8
+	// #define DIVIDER_SPI (*(volatile uint8_t*)((CCLK/(2*FREC_SPI))-1))
+	#define DIVIDER_SPI ((CCLK/(2*FREC_SPI))-1) // Scamos el divider para que la frecuencia quede a 1Mhz -> Div = (CCLK/(2*frecuencia))-1 => Div = (18Mhz/(2*1Mhz))-1 = 8
 	// SCK frequency = Fclk / (2*(DIVIDER+1));
 	SPICTL= (8<<8)|DIVIDER_SPI;
-
 	UARTBAUD=(CCLK+BAUD/2)/BAUD -1;	
-	_delay_ms(100);
+	SPISS = 0;
+
+	while(1){
+		//SPIDAT = 0x66;
+		/*spixfer('h');
+		spixfer('o');
+		spixfer('l');
+		spixfer('a');
+		spixfer('\n');
+		_putch('A');*/
+		// spixfer('U');
+
+
+
+		spixfer('M');
+		spixfer('e');
+		spixfer('L');
+		spixfer('a');
+		spixfer('C');
+		spixfer('h');
+		spixfer('u');
+		spixfer('p');
+		spixfer('a');
+		spixfer('\n');
+		_delay_ms(2500);
+		char SPI_Rx = spixfer(0);
+		_printf("%c\n",SPI_Rx);
+
+	   	_putch('J');
+     	_delay_ms(2500);
+	}
+	while(1);
+	//SPIDAT = 0x55;
+	//spixfer(0x66);
+	UARTBAUD=(CCLK+BAUD/2)/BAUD -1;	
+    _putch('U');
+	
+	//_delay_ms(100);
 	c = UARTDAT;		// Clear RX garbage
 	_puts("SPI prueba\n");
 	int divider = DIVIDER_SPI; // Comprobamos cual es el valor del divider
 	_puts("Divider es:");
-	_putch(divider);  
-	_puts("Campeon\n");
+	_printf("%d\n",divider);  
 
-
-
-	while(1)
-	{
-		_puts("holss");
-		spixfer(0x55);
-		_delay_ms(100);
-	}
 	// Ponemos los pines gpout a 1 y se iluminan los led
 	GPOUT = 0xF;
+	
+	while(1)
+	{
+		_printf("\nEnviado\n");
+		spixfer(0x66);
+		_delay_ms(100);
+	}
 	
 	IRQVECT0=(uint32_t)irq1_handler;
 	IRQVECT1=(uint32_t)irq2_handler;

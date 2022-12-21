@@ -1,46 +1,65 @@
 [*]
 [*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
-[*] Fri Nov 04 12:21:27 2022
+[*] Wed Dec 21 16:38:53 2022
 [*]
-[dumpfile] "C:\TP1_RV32E\laRVa_copia\tb.vcd"
-[dumpfile_mtime] "Fri Nov 04 12:20:05 2022"
-[dumpfile_size] 1061087
-[savefile] "C:\TP1_RV32E\laRVa_copia\tb.gtkw"
+[dumpfile] "C:\Users\TP1-1\Downloads\PruebaUART-20221129T083226Z-001\PruebaUART\laRVa_lesdoy_SPI_arreglado\tb.vcd"
+[dumpfile_mtime] "Wed Dec 21 16:38:41 2022"
+[dumpfile_size] 64735152
+[savefile] "C:\Users\TP1-1\Downloads\PruebaUART-20221129T083226Z-001\PruebaUART\laRVa_lesdoy_SPI_arreglado\tb.gtkw"
 [timestart] 0
-[size] 1504 674
-[pos] 1087 852
-*-12.285559 1216 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[size] 1920 1017
+[pos] -1 -1
+*-19.345966 4174000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb.
 [treeopen] tb.sys1.
 [sst_width] 221
 [signals_width] 212
 [sst_expanded] 1
-[sst_vpaned_height] 172
+[sst_vpaned_height] 286
 @28
-tb.sys1.cclk
+tb.sys1.spi0.clk
+tb.sys1.spi0.wr
+@c00022
+tb.sys1.spi0.divcnt[7:0]
+@28
+(0)tb.sys1.spi0.divcnt[7:0]
+(1)tb.sys1.spi0.divcnt[7:0]
+(2)tb.sys1.spi0.divcnt[7:0]
+(3)tb.sys1.spi0.divcnt[7:0]
+(4)tb.sys1.spi0.divcnt[7:0]
+(5)tb.sys1.spi0.divcnt[7:0]
+(6)tb.sys1.spi0.divcnt[7:0]
+(7)tb.sys1.spi0.divcnt[7:0]
+@1401200
+-group_end
+@28
+tb.sys1.spiwr
+tb.sys1.spi0.falling
+tb.sys1.spi0.busy
 @22
-tb.sys1.cpu.IR[31:0]
+tb.sys1.spi0.shreg[31:0]
 @28
-tb.sys1.cpu.opvalid
+tb.sys1.spi0.sin
 @22
-tb.sys1.cpu.opcode[6:0]
-tb.sys1.cpu.rs1[4:0]
-tb.sys1.cpu.rs2[4:0]
-tb.sys1.cpu.rd[4:0]
+tb.sys1.spictl[13:0]
+tb.sys1.spi0.bitcnt[5:0]
 @28
-tb.sys1.rxd
-@23
-tb.sys1.uart0.rbr[7:0]
-@28
-tb.sys1.txd
-tb.sys1.uart0.tend
-tb.sys1.irq
-tb.sys1.cpu.irqstart
-tb.sys1.cpu.mret
-tb.sys1.cpu.mmode
-tb.sys1.cpu.trap
-tb.sys1.cpu.csrrw_mepc
+tb.ICE_SCK
+tb.ICE_MOSI
+tb.sys1.mosi
 @22
-tb.sys1.cpu.regsD[31:0]
+tb.sys1.spi0.din[31:0]
+tb.sys1.spi0.shreg[31:0]
+@28
+tb.sys1.spiwr
+tb.sys1.spitx
+@22
+tb.sys1.spi0.divcnt[7:0]
+@28
+tb.sys1.spi0.sck
+@22
+tb.sys1.spiDataRx[31:0]
+@29
+tb.ICE_MISO
 [pattern_trace] 1
 [pattern_trace] 0

@@ -12,7 +12,7 @@ Disassembly of section .text:
    8:	00002517          	auipc	a0,0x2
    c:	bf850513          	addi	a0,a0,-1032 # 1c00 <a.0>
   10:	00001597          	auipc	a1,0x1
-  14:	99258593          	addi	a1,a1,-1646 # 9a2 <_etext>
+  14:	98c58593          	addi	a1,a1,-1652 # 99c <_etext>
   18:	00002617          	auipc	a2,0x2
   1c:	bec60613          	addi	a2,a2,-1044 # 1c04 <udat>
   20:	00c55c63          	bge	a0,a2,38 <end_init_data>
@@ -282,7 +282,7 @@ Disassembly of section .text:
  3e8:	00440393          	addi	t2,s0,4
  3ec:	00059663          	bnez	a1,3f8 <print+0xc8>
  3f0:	000015b7          	lui	a1,0x1
- 3f4:	96058593          	addi	a1,a1,-1696 # 960 <main+0x94>
+ 3f4:	98058593          	addi	a1,a1,-1664 # 980 <main+0xb4>
  3f8:	00612623          	sw	t1,12(sp)
  3fc:	00712423          	sw	t2,8(sp)
  400:	00078693          	mv	a3,a5
@@ -463,7 +463,7 @@ Disassembly of section .text:
  684:	fc9ff0ef          	jal	ra,64c <getMEPC>
  688:	00050593          	mv	a1,a0
  68c:	00001537          	lui	a0,0x1
- 690:	96850513          	addi	a0,a0,-1688 # 968 <main+0x9c>
+ 690:	98850513          	addi	a0,a0,-1656 # 988 <main+0xbc>
  694:	ee5ff0ef          	jal	ra,578 <_printf>
  698:	02412083          	lw	ra,36(sp)
  69c:	02012283          	lw	t0,32(sp)
@@ -527,49 +527,49 @@ Disassembly of section .text:
  774:	00c10113          	addi	sp,sp,12
  778:	30200073          	mret
 
-0000077c <spixfer>:
- 77c:	e00007b7          	lui	a5,0xe0000
- 780:	02a7a023          	sw	a0,32(a5) # e0000020 <_ebss+0xdfffe3f8>
- 784:	e0000737          	lui	a4,0xe0000
- 788:	02472783          	lw	a5,36(a4) # e0000024 <_ebss+0xdfffe3fc>
- 78c:	0017f793          	andi	a5,a5,1
- 790:	fe079ce3          	bnez	a5,788 <spixfer+0xc>
- 794:	02072503          	lw	a0,32(a4)
- 798:	00008067          	ret
-
-0000079c <getw>:
- 79c:	ff410113          	addi	sp,sp,-12
- 7a0:	00112423          	sw	ra,8(sp)
- 7a4:	00812223          	sw	s0,4(sp)
- 7a8:	00912023          	sw	s1,0(sp)
+0000077c <getw>:
+ 77c:	ff410113          	addi	sp,sp,-12
+ 780:	00112423          	sw	ra,8(sp)
+ 784:	00812223          	sw	s0,4(sp)
+ 788:	00912023          	sw	s1,0(sp)
+ 78c:	e61ff0ef          	jal	ra,5ec <_getch>
+ 790:	00050493          	mv	s1,a0
+ 794:	e59ff0ef          	jal	ra,5ec <_getch>
+ 798:	00050413          	mv	s0,a0
+ 79c:	e51ff0ef          	jal	ra,5ec <_getch>
+ 7a0:	01051513          	slli	a0,a0,0x10
+ 7a4:	00841413          	slli	s0,s0,0x8
+ 7a8:	00a46433          	or	s0,s0,a0
  7ac:	e41ff0ef          	jal	ra,5ec <_getch>
- 7b0:	00050493          	mv	s1,a0
- 7b4:	e39ff0ef          	jal	ra,5ec <_getch>
- 7b8:	00050413          	mv	s0,a0
- 7bc:	e31ff0ef          	jal	ra,5ec <_getch>
- 7c0:	01051513          	slli	a0,a0,0x10
- 7c4:	00841413          	slli	s0,s0,0x8
- 7c8:	00a46433          	or	s0,s0,a0
- 7cc:	e21ff0ef          	jal	ra,5ec <_getch>
- 7d0:	00946433          	or	s0,s0,s1
- 7d4:	01851513          	slli	a0,a0,0x18
- 7d8:	00812083          	lw	ra,8(sp)
- 7dc:	00856533          	or	a0,a0,s0
- 7e0:	00412403          	lw	s0,4(sp)
- 7e4:	00012483          	lw	s1,0(sp)
- 7e8:	00c10113          	addi	sp,sp,12
- 7ec:	00008067          	ret
+ 7b0:	00946433          	or	s0,s0,s1
+ 7b4:	01851513          	slli	a0,a0,0x18
+ 7b8:	00812083          	lw	ra,8(sp)
+ 7bc:	00856533          	or	a0,a0,s0
+ 7c0:	00412403          	lw	s0,4(sp)
+ 7c4:	00012483          	lw	s1,0(sp)
+ 7c8:	00c10113          	addi	sp,sp,12
+ 7cc:	00008067          	ret
 
-000007f0 <_memcpy>:
- 7f0:	02060263          	beqz	a2,814 <_memcpy+0x24>
- 7f4:	00000793          	li	a5,0
- 7f8:	00f58733          	add	a4,a1,a5
- 7fc:	00074683          	lbu	a3,0(a4)
- 800:	00f50733          	add	a4,a0,a5
- 804:	00178793          	addi	a5,a5,1
- 808:	00d70023          	sb	a3,0(a4)
- 80c:	fef616e3          	bne	a2,a5,7f8 <_memcpy+0x8>
- 810:	00c50533          	add	a0,a0,a2
+000007d0 <_memcpy>:
+ 7d0:	02060263          	beqz	a2,7f4 <_memcpy+0x24>
+ 7d4:	00000793          	li	a5,0
+ 7d8:	00f58733          	add	a4,a1,a5
+ 7dc:	00074683          	lbu	a3,0(a4)
+ 7e0:	00f50733          	add	a4,a0,a5
+ 7e4:	00178793          	addi	a5,a5,1
+ 7e8:	00d70023          	sb	a3,0(a4)
+ 7ec:	fef616e3          	bne	a2,a5,7d8 <_memcpy+0x8>
+ 7f0:	00c50533          	add	a0,a0,a2
+ 7f4:	00008067          	ret
+
+000007f8 <spixfer>:
+ 7f8:	e00007b7          	lui	a5,0xe0000
+ 7fc:	02a7a023          	sw	a0,32(a5) # e0000020 <_ebss+0xdfffe3f8>
+ 800:	e0000737          	lui	a4,0xe0000
+ 804:	02472783          	lw	a5,36(a4) # e0000024 <_ebss+0xdfffe3fc>
+ 808:	0017f793          	andi	a5,a5,1
+ 80c:	fe079ce3          	bnez	a5,804 <spixfer+0xc>
+ 810:	02072503          	lw	a0,32(a4)
  814:	00008067          	ret
 
 00000818 <__divsi3>:
@@ -627,71 +627,61 @@ Disassembly of section .text:
 
 000008cc <main>:
  8cc:	ff410113          	addi	sp,sp,-12
- 8d0:	00112423          	sw	ra,8(sp)
- 8d4:	00812223          	sw	s0,4(sp)
- 8d8:	00804783          	lbu	a5,8(zero) # 8 <start+0x4>
- 8dc:	00001737          	lui	a4,0x1
- 8e0:	80070713          	addi	a4,a4,-2048 # 800 <_memcpy+0x10>
- 8e4:	00e7e7b3          	or	a5,a5,a4
- 8e8:	e0000437          	lui	s0,0xe0000
- 8ec:	02f42223          	sw	a5,36(s0) # e0000024 <_ebss+0xdfffe3fc>
- 8f0:	00092537          	lui	a0,0x92
- 8f4:	09b00793          	li	a5,155
- 8f8:	00f42223          	sw	a5,4(s0)
- 8fc:	7b650513          	addi	a0,a0,1974 # 927b6 <_ebss+0x90b8e>
- 900:	f60ff0ef          	jal	ra,60 <delay_loop>
- 904:	00044783          	lbu	a5,0(s0)
- 908:	00001537          	lui	a0,0x1
- 90c:	97850513          	addi	a0,a0,-1672 # 978 <main+0xac>
- 910:	c35ff0ef          	jal	ra,544 <_puts>
- 914:	00804403          	lbu	s0,8(zero) # 8 <start+0x4>
- 918:	00001537          	lui	a0,0x1
- 91c:	98450513          	addi	a0,a0,-1660 # 984 <main+0xb8>
- 920:	0ff47413          	zext.b	s0,s0
- 924:	c21ff0ef          	jal	ra,544 <_puts>
- 928:	00040513          	mv	a0,s0
- 92c:	f40ff0ef          	jal	ra,6c <_putch>
- 930:	00001537          	lui	a0,0x1
- 934:	99050513          	addi	a0,a0,-1648 # 990 <main+0xc4>
- 938:	c0dff0ef          	jal	ra,544 <_puts>
- 93c:	00001437          	lui	s0,0x1
- 940:	99c40513          	addi	a0,s0,-1636 # 99c <main+0xd0>
- 944:	c01ff0ef          	jal	ra,544 <_puts>
- 948:	05500513          	li	a0,85
- 94c:	e31ff0ef          	jal	ra,77c <spixfer>
- 950:	00092537          	lui	a0,0x92
- 954:	7b650513          	addi	a0,a0,1974 # 927b6 <_ebss+0x90b8e>
- 958:	f08ff0ef          	jal	ra,60 <delay_loop>
- 95c:	fe5ff06f          	j	940 <main+0x74>
- 960:	6e28                	.2byte	0x6e28
- 962:	6c75                	.2byte	0x6c75
- 964:	296c                	.2byte	0x296c
- 966:	0000                	.2byte	0x0
- 968:	540a                	.2byte	0x540a
- 96a:	4152                	.2byte	0x4152
- 96c:	2050                	.2byte	0x2050
- 96e:	7461                	.2byte	0x7461
- 970:	3020                	.2byte	0x3020
- 972:	2578                	.2byte	0x2578
- 974:	0a78                	.2byte	0xa78
- 976:	0000                	.2byte	0x0
- 978:	20495053          	.4byte	0x20495053
- 97c:	7270                	.2byte	0x7270
- 97e:	6575                	.2byte	0x6575
- 980:	6162                	.2byte	0x6162
- 982:	000a                	.2byte	0xa
- 984:	6944                	.2byte	0x6944
- 986:	6976                	.2byte	0x6976
- 988:	6564                	.2byte	0x6564
- 98a:	2072                	.2byte	0x2072
- 98c:	7365                	.2byte	0x7365
- 98e:	003a                	.2byte	0x3a
- 990:	706d6143          	.4byte	0x706d6143
- 994:	6f65                	.2byte	0x6f65
- 996:	0a6e                	.2byte	0xa6e
- 998:	0000                	.2byte	0x0
- 99a:	0000                	.2byte	0x0
- 99c:	6f68                	.2byte	0x6f68
- 99e:	736c                	.2byte	0x736c
- 9a0:	73 00             	Address 0x00000000000009a0 is out of bounds.
-
+ 8d0:	00001737          	lui	a4,0x1
+ 8d4:	00912023          	sw	s1,0(sp)
+ 8d8:	00112423          	sw	ra,8(sp)
+ 8dc:	00812223          	sw	s0,4(sp)
+ 8e0:	e00007b7          	lui	a5,0xe0000
+ 8e4:	80870713          	addi	a4,a4,-2040 # 808 <spixfer+0x10>
+ 8e8:	02e7a223          	sw	a4,36(a5) # e0000024 <_ebss+0xdfffe3fc>
+ 8ec:	09b00713          	li	a4,155
+ 8f0:	00e7a223          	sw	a4,4(a5)
+ 8f4:	0207a423          	sw	zero,40(a5)
+ 8f8:	000014b7          	lui	s1,0x1
+ 8fc:	04d00513          	li	a0,77
+ 900:	ef9ff0ef          	jal	ra,7f8 <spixfer>
+ 904:	06500513          	li	a0,101
+ 908:	ef1ff0ef          	jal	ra,7f8 <spixfer>
+ 90c:	04c00513          	li	a0,76
+ 910:	ee9ff0ef          	jal	ra,7f8 <spixfer>
+ 914:	06100513          	li	a0,97
+ 918:	ee1ff0ef          	jal	ra,7f8 <spixfer>
+ 91c:	04300513          	li	a0,67
+ 920:	ed9ff0ef          	jal	ra,7f8 <spixfer>
+ 924:	06800513          	li	a0,104
+ 928:	ed1ff0ef          	jal	ra,7f8 <spixfer>
+ 92c:	07500513          	li	a0,117
+ 930:	ec9ff0ef          	jal	ra,7f8 <spixfer>
+ 934:	07000513          	li	a0,112
+ 938:	ec1ff0ef          	jal	ra,7f8 <spixfer>
+ 93c:	06100513          	li	a0,97
+ 940:	eb9ff0ef          	jal	ra,7f8 <spixfer>
+ 944:	00a00513          	li	a0,10
+ 948:	eb1ff0ef          	jal	ra,7f8 <spixfer>
+ 94c:	00e4e437          	lui	s0,0xe4e
+ 950:	1b640513          	addi	a0,s0,438 # e4e1b6 <_ebss+0xe4c58e>
+ 954:	f0cff0ef          	jal	ra,60 <delay_loop>
+ 958:	00000513          	li	a0,0
+ 95c:	e9dff0ef          	jal	ra,7f8 <spixfer>
+ 960:	0ff57593          	zext.b	a1,a0
+ 964:	99848513          	addi	a0,s1,-1640 # 998 <main+0xcc>
+ 968:	c11ff0ef          	jal	ra,578 <_printf>
+ 96c:	04a00513          	li	a0,74
+ 970:	efcff0ef          	jal	ra,6c <_putch>
+ 974:	1b640513          	addi	a0,s0,438
+ 978:	ee8ff0ef          	jal	ra,60 <delay_loop>
+ 97c:	f81ff06f          	j	8fc <main+0x30>
+ 980:	6e28                	.2byte	0x6e28
+ 982:	6c75                	.2byte	0x6c75
+ 984:	296c                	.2byte	0x296c
+ 986:	0000                	.2byte	0x0
+ 988:	540a                	.2byte	0x540a
+ 98a:	4152                	.2byte	0x4152
+ 98c:	2050                	.2byte	0x2050
+ 98e:	7461                	.2byte	0x7461
+ 990:	3020                	.2byte	0x3020
+ 992:	2578                	.2byte	0x2578
+ 994:	0a78                	.2byte	0xa78
+ 996:	0000                	.2byte	0x0
+ 998:	6325                	.2byte	0x6325
+ 99a:	000a                	.2byte	0xa

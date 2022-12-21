@@ -89,4 +89,3 @@ assign mosi=shreg[bits-1];	// Lo más simple en multiplexores ;)
 assign dout=shreg;
 
 endmodule
-
